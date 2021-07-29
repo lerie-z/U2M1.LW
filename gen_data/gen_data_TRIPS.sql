@@ -14,6 +14,6 @@ SELECT
       ,TO_DATE(TRUNC(dbms_random.VALUE(2454833,2455197)),'J')                       --insert_dt
       ,TO_DATE(TRUNC(dbms_random.VALUE(2467833,2955197)),'J')                       --update_dt
 FROM ( 
-SELECT 1
+SELECT ROWNUM
 FROM dual
 CONNECT BY LEVEL <= 150000 );
