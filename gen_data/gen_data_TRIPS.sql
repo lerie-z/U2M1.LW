@@ -2,17 +2,9 @@
 -- GENERATING DATA FOR t_sa_trips
 --==============================================================
 
-CREATE SEQUENCE trip_seq
-    START WITH 1
-    INCREMENT BY 1
-    NOCACHE
-    NOCYCLE
-    NOMAXVALUE;
-
-
 INSERT INTO sa_trips.t_sa_trips
 SELECT 
-       trip_seq.NEXTVAL                                                             --trip_id
+       ROWNUM                                                                       --trip_id
       ,dbms_random.STRING('U', 20)                                                  --trip_desc
       ,dbms_random.VALUE(100000, 999999)                                            --trip_from - geo coordinates
       ,dbms_random.VALUE(100000, 999999)                                            --trip_to - geo coordinates
@@ -24,4 +16,4 @@ SELECT
 FROM ( 
 SELECT 1
 FROM dual
-CONNECT BY LEVEL <= 1500000 );
+CONNECT BY LEVEL <= 150000 );
