@@ -65,6 +65,7 @@ CREATE TABLE sa_trips.t_sa_trips
    ,trip_duration             NUMBER(4,0)
    ,trip_cost                 NUMBER(4,0)
    ,payment_type              VARCHAR(30)
-   ,insert_dt                 DATE
-   ,update_dt                 DATE
+   ,trip_date                 DATE
+   ,trip_client_id            NUMBER(22,0)
+   ,trip_driver_id            NUMBER(22,0)
 );
