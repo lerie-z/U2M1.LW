@@ -2,17 +2,9 @@
 -- GENERATING DATA FOR t_sa_vehicles
 --==============================================================
 
-CREATE SEQUENCE vehicle_seq
-    START WITH 1
-    INCREMENT BY 1
-    NOCACHE
-    NOCYCLE
-    NOMAXVALUE;
-
-
 INSERT INTO sa_vehicles.t_sa_vehicles
 SELECT 
-       vehicle_seq.NEXTVAL                                                          --vehicle_id
+       ROWNUM                                                                       --vehicle_id
       ,dbms_random.VALUE(1000, 9999)                                                --vehicle_code
       ,dbms_random.STRING('U', 20)                                                  --vehicle_desc
       ,dbms_random.STRING('x', 10)                                                  --vehicle_vin
@@ -25,4 +17,4 @@ SELECT
 FROM ( 
 SELECT 1
 FROM dual
-CONNECT BY LEVEL <= 300000 );
+CONNECT BY LEVEL <= 250000 );
