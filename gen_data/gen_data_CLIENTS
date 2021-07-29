@@ -6,17 +6,15 @@ INSERT INTO sa_clients.t_sa_clients
 SELECT 
        ROWNUM                                                                       --client_id
       ,dbms_random.STRING('U', 20)                                                  --client_desc
-      ,TO_DATE(TRUNC(dbms_random.VALUE(2354833,2955197)),'J')                       --client_birthdate
+      ,to_date('1990-01-01', 'yyyy-mm-dd')+dbms_random.value(1,1000)                --client_birthdate
       ,'client' || to_char(ROWNUM)                                                  --client_firstname
       ,'name__' || to_char(ROWNUM)                                                  --client_lastname
-      ,TO_DATE(TRUNC(dbms_random.VALUE(2454833,2455197)),'J')                       --registration_dt
-      ,TO_DATE(TRUNC(dbms_random.VALUE(2454833,2455197)),'J')                       --insert_dt
-      ,TO_DATE(TRUNC(dbms_random.VALUE(2467833,2955197)),'J')                       --update_dt
-      ,TO_DATE(TRUNC(dbms_random.VALUE(2454833,2555197)),'J')                       --valid_from
-      ,TO_DATE(TRUNC(dbms_random.VALUE(2454833,2755197)),'J')                       --valid_to
+      ,to_date('2010-01-01', 'yyyy-mm-dd')+dbms_random.value(1,10000)               --registration_dt
+      ,to_date('2010-01-01', 'yyyy-mm-dd')+dbms_random.value(1,10000)               --insert_dt
+      ,to_date('2010-01-01', 'yyyy-mm-dd')+dbms_random.value(1,10000)               --update_dt
+      ,to_date('2010-01-01', 'yyyy-mm-dd')+dbms_random.value(1,10000)               --valid_from
+      ,to_date('2010-01-01', 'yyyy-mm-dd')+dbms_random.value(1,10000)               --valid_to
 FROM ( 
-SELECT 1
+SELECT rownum
 FROM dual
-CONNECT BY LEVEL <= 100000 );
-
-delete from sa_clients.t_sa_clients;
+CONNECT BY LEVEL <= 1200000 );
